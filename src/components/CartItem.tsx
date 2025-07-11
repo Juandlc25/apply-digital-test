@@ -25,6 +25,7 @@ export default function CartItem({
 
   return (
     <div
+      data-testid="cart-item"
       className={`flex flex-col md:flex-row items-center py-4 w-full ${
         !isLast ? "border-b" : ""
       }`}

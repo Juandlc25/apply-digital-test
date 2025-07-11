@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { fetchGames } from "@/services/gameService";
 import { addToCart, removeFromCart, isInCart } from "@/services/cartService";
@@ -8,7 +8,7 @@ import GenreFilter from "@/components/GenreFilter";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import { Game } from "@/utils/endpoint";
 
-export default function CatalogPage() {
+function CatalogPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [games, setGames] = useState<Game[]>([]);
@@ -101,5 +101,13 @@ export default function CatalogPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function CatalogPage() {
+  return (
+    <Suspense fallback={<LoadingIndicator />}>
+      <CatalogPageContent />
+    </Suspense>
   );
 }

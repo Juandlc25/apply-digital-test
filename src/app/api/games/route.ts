@@ -2,8 +2,6 @@ import { allGames, availableFilters, delay } from "@/utils/endpoint";
 
 const ITEMS_PER_PAGE = 12;
 
-export { availableFilters };
-
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const genre = searchParams.get("genre");

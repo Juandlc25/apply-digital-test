@@ -11,7 +11,7 @@ export default function GenreFilter({
 }: GenreFilterProps) {
   return (
     <div className="flex items-center gap-2 w-full md:justify-end">
-      <label htmlFor="genre-select" className="mr-2 font-medium">
+      <label htmlFor="genre-select" className="text-gray-600 mr-2 font-medium">
         Genre
       </label>
       <div className="h-6 w-px bg-gray-400 mx-2" />

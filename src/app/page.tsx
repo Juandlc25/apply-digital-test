@@ -6,11 +6,12 @@ import { addToCart, removeFromCart, isInCart } from "@/services/cartService";
 import GameCard from "@/components/GameCard";
 import GenreFilter from "@/components/GenreFilter";
 import LoadingIndicator from "@/components/LoadingIndicator";
+import { Game } from "@/utils/endpoint";
 
 export default function CatalogPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState<Game[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -78,7 +79,7 @@ export default function CatalogPage() {
       ) : (
         <div className="mx-auto px-8 md:px-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {games.map((game: any) => (
+            {games.map((game: Game) => (
               <GameCard
                 key={game.id}
                 game={game}
@@ -88,9 +89,9 @@ export default function CatalogPage() {
             ))}
           </div>
           {currentPage < totalPages && games.length === 12 && (
-            <div className="flex justify-center mt-8">
+            <div className="flex mt-8">
               <button
-                className="bg-neutral-700 text-white px-6 py-2 rounded hover:bg-neutral-800 transition"
+                className="bg-neutral-700 w-full md:w-auto text-white px-6 py-2 rounded hover:bg-neutral-800 transition"
                 onClick={handleSeeMore}
               >
                 See More

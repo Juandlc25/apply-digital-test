@@ -26,26 +26,34 @@ export default function CartPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-8">
-      <div className="flex-1">
+    <div className="w-full flex flex-col px-8 md:px-16 py-8 gap-4">
+      <div>
         <button
-          className="mb-4 text-sm text-blue-600 hover:underline"
+          className="mb-12 text-base text-gray-600"
           onClick={() => router.push("/")}
         >
           &larr; Back to Catalog
         </button>
-        <h2 className="text-xl font-bold mb-4">Your Cart</h2>
+        <div className="mb-4">
+          <h2 className="text-xl font-bold">Your Cart</h2>
+          {!!cart.length && <span>{cart.length} items</span>}
+        </div>
+      </div>
+      <div className="w-full flex flex-col md:flex-row gap-8">
         {cart.length === 0 ? (
           <div className="text-gray-500">Your cart is empty.</div>
         ) : (
-          <div>
-            {cart.map((game: any) => (
-              <CartItem key={game.id} game={game} onRemove={handleRemove} />
+          <div className="w-full md:w-3/5">
+            {cart.map((game: Game, index: number) => (
+              <CartItem
+                key={game.id}
+                game={game}
+                onRemove={handleRemove}
+                isLast={index === cart.length - 1}
+              />
             ))}
           </div>
         )}
-      </div>
-      <div className="w-full md:w-80">
         <OrderSummary games={cart} />
       </div>
     </div>

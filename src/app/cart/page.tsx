@@ -41,7 +41,9 @@ export default function CartPage() {
       </div>
       <div className="w-full flex flex-col md:flex-row gap-8">
         {cart.length === 0 ? (
-          <div className="text-gray-500">Your cart is empty.</div>
+          <div className="text-gray-500 w-full md:w-3/5">
+            Your cart is empty.
+          </div>
         ) : (
           <div className="w-full md:w-3/5">
             {cart.map((game: Game, index: number) => (

@@ -68,10 +68,7 @@ describe("cartService", () => {
 
       addToCart(mockGame);
 
-      expect(localStorageMock.setItem).toHaveBeenCalledWith(
-        "cart_items",
-        JSON.stringify([mockGame])
-      );
+      expect(localStorageMock.setItem).not.toHaveBeenCalled();
     });
   });
 

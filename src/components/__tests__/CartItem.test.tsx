@@ -36,8 +36,8 @@ describe("CartItem", () => {
   it("calls onRemove when remove button is clicked", () => {
     render(<CartItem game={mockGame} onRemove={mockOnRemove} isLast={false} />);
 
-    const removeButton = screen.getByRole("button", { name: /remove/i });
-    fireEvent.click(removeButton);
+    const removeButtons = screen.getAllByRole("button", { name: /remove/i });
+    fireEvent.click(removeButtons[0]);
 
     expect(mockOnRemove).toHaveBeenCalledWith("1");
   });

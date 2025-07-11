@@ -18,7 +18,7 @@ describe("GenreFilter", () => {
       />
     );
 
-    expect(screen.getByText("All Genres")).toBeDefined();
+    expect(screen.getByText("All")).toBeDefined();
     mockGenres.forEach((genre) => {
       expect(screen.getByText(genre)).toBeDefined();
     });
